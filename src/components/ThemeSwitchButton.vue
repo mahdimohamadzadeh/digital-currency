@@ -1,11 +1,16 @@
 <template>
   <label class="swap swap-rotate">
     <!-- this hidden checkbox controls the state -->
-    <input type="checkbox" class="hidden" @click="toggleTheme" />
+    <input
+      type="checkbox"
+      checked="checked"
+      class="toggle toggle-md toggle-accent"
+      @click="toggleTheme"
+    />
 
     <!-- sun icon -->
     <svg
-      class="swap-on fill-current w-6 h-6 cursor-pointer"
+      class="swap-on fill-current w-4 h-4 my-auto ml-1 cursor-pointer"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
     >
@@ -16,7 +21,7 @@
 
     <!-- moon icon -->
     <svg
-      class="swap-off fill-current w-6 h-6 cursor-pointer"
+      class="swap-off fill-current w-4 h-5 cursor-pointer my-auto ml-7 text-gray-600"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
     >
@@ -28,12 +33,13 @@
 </template>
 
 <script>
-import { computed } from "@vue/reactivity";
+import { computed } from "@vue/runtime-core";
 import { useStore } from "vuex";
+
 export default {
   setup() {
     const store = useStore();
-    const theme = computed(() => store.getters.getTheme);
+    const theme = computed(() => store.getters.getTheme || "dark");
     const toggleTheme = () => {
       store.dispatch("toggleTheme");
     };

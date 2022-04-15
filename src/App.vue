@@ -1,21 +1,26 @@
 <template>
-  <div  id="app" class="">
-    <Navbar class="mb-20" />
+  <div id="app" :data-theme="theme === 'light' ? 'emerald' : ''">
+    <Navbar />
     <router-view class="container mx-auto px-4" />
-    <!-- <Footer class="mt-20" /> -->
+    <Footer />
   </div>
 </template>
 
 <script>
 import Navbar from "./components/Navbar.vue";
 import Footer from "./components/Footer.vue";
-
+import { useStore } from "vuex";
+import { computed } from "@vue/runtime-core";
 export default {
   setup() {
-    return {};
+    const store = useStore();
+    const theme = computed(() => store.getters.getTheme);
+
+    return { theme };
   },
-  components: { Navbar, Footer },
+  components: {
+    Navbar,
+    Footer,
+  },
 };
 </script>
-
-<style lang="scss" scoped></style>

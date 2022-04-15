@@ -4,7 +4,7 @@ import {
 
 export default createStore({
     state: {
-        theme: false,
+        theme: "",
     },
     mutations: {
         SET_THEME(state, theme) {
@@ -23,7 +23,7 @@ export default createStore({
             ).matches;
             if (cachedTheme) commit("SET_THEME", cachedTheme);
             else if (userPrefersDark) commit("SET_THEME", "dark");
-            else commit("SET_THEME", "light");
+            else commit("SET_THEME", "dark");
         },
         toggleTheme({
             commit

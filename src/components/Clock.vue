@@ -1,8 +1,8 @@
 <template>
-  <div class="flex justify-center lg:absolute">
-    <div class="mt-2 p-2 w-40 bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 rounded-lg shadow-xl">
+  <div class="flex justify-center lg:absolute my-10">
+    <div class="mt-2 p-2 w-40 bg-accent rounded-lg shadow-xl">
       <div
-        class="flex justify-center align-center w-28 h-14  rounded-xl text-3xl p-2  mx-4 my-2 text-white"
+        class="flex justify-center align-center w-28 h-14  rounded-xl text-3xl p-2  mx-4 my-2 "
       >
         <div class="">{{ hours }}:</div>
         <div class="">{{ minutes }}:</div>

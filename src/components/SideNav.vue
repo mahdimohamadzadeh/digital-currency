@@ -1,8 +1,8 @@
 <template>
-  <div class="w-full h-full">
+  <div class="w-full h-full" :data-theme="theme === 'light' ? 'emerald' : ''">
     <div
       v-if="show"
-      class="w-full h-full opacity-75 bg-black z-20 fixed top-0 left-0"
+      class="w-full h-full opacity-75 bg-gray-900 z-20 fixed top-0 left-0"
       @click="$emit('close')"
     >
       <button class="absolute top-3 right-5" v-if="show">
@@ -26,11 +26,11 @@
     <Transition name="slide-fade">
       <div
         v-if="show"
-        class="h-full w-1/2 shadow-xl opacity-90 shadow-slate-500 bg-yellow-500 z-30 fixed top-0 left-0 p-2 text-black text-xl rounded-b-lg rounded-r-xl"
+        class="h-full w-1/2 shadow-xl opacity-90 shadow-slate-500 bg-yellow-400 z-30 fixed top-0 left-0 p-2 text-black text-xl rounded-b-lg rounded-r-xl"
       >
         <ul class="nav-list font-sans flex flex-col">
           <li
-            class="my-4 text-indigo-900 flex justify-start ml-3  items-center cursor-pointer"
+            class="my-4 text-indigo-900 flex justify-start ml-3 items-center cursor-pointer"
             @click="$emit('close')"
           >
             <svg
@@ -50,7 +50,7 @@
             <router-link to="/">Home</router-link>
           </li>
           <li
-            class="my-4 text-indigo-900 flex justify-start ml-3  items-center cursor-pointer"
+            class="my-4 text-indigo-900 flex justify-start ml-3 items-center cursor-pointer"
             @click="$emit('close')"
           >
             <svg
@@ -69,7 +69,7 @@
             ><router-link to="/calculator">Calculator</router-link>
           </li>
           <li
-            class="my-4 text-indigo-900 flex justify-start ml-3  items-center cursor-pointer"
+            class="my-4 text-indigo-900 flex justify-start ml-3 items-center cursor-pointer"
             @click="$emit('close')"
           >
             <svg
@@ -102,15 +102,15 @@ export default {
       type: Boolean,
       default: false,
     },
+    theme: {
+      type: [String,Boolean],
+      default: "light",
+    },
   },
 };
 </script>
 
 <style scoped>
-a:hover,
-a:active {
-  color: red;
-}
 .slide-fade-enter-active {
   transition: all 0.2s ease-out;
 }

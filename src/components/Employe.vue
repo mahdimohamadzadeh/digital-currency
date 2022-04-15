@@ -1,38 +1,38 @@
 <template>
   <div>
-    <h1 class="text-2xl font-bold text-center mt-4 text-blue-900">Moneye Xchange</h1>
+    <h1 class="text-2xl font-bold text-center mt-10">Moneye Xchange</h1>
     <!-- component -->
     <div class="flex justify-center min-h-auto antialiased">
-      <div class="container sm:mt-10 mt-4 my-auto max-w-md p-3 bg-purple-100 rounded-3xl">
+      <div
+        class="container sm:mt-10 mt-4 my-auto max-w-md p-3 bg-primary rounded-3xl"
+      >
         <!-- header -->
         <div class="text-center m-6">
-          <h3 class="text-3xl font-semibold text-gray-700">
+          <h3 class="text-3xl font-semibold">
             Price: {{ rialValue }} <small> rial</small>
           </h3>
-          <h3 class="text-3xl font-semibold text-gray-700 mt-4">
+          <h3 class="text-3xl font-semibold mt-4">
             USD: {{ usdValueInput }} <small> USD</small>
           </h3>
         </div>
         <!-- sign-in -->
         <div class="m-6">
-          <form class="mb-4">
+          <form class="mb-4" @submit.prevent="fetchPrice">
             <div class="mb-6">
-              <label
-                for="email"
-                class="block md:ml-16 mb-2 text-sm text-gray-600 dark:text-gray-400"
-                >Enter the price :</label
-              >
+              <label class="label block md:ml-16 mb-2">
+                <span class="label-text text-lg">Enter the price :</span>
+              </label>
               <input
                 type="number"
                 v-model="usdValueInput"
                 placeholder="Enter USD price..."
-                class="w-full md:w-60 md:ml-16 px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
+                class="input input-error input-bordered w-full md:w-60 md:ml-16 px-3 py-2"
               />
             </div>
             <div class="mb-6">
               <button
-                @click="fetchPrice"
-                class="w-full md:w-1/2 md:ml-20 px-6 py-3 rounded-md text-xl font-medium border-0 focus:outline-none focus:ring transition text-white bg-green-500 hover:bg-green-600 active:bg-green-700 focus:ring-green-300 mt-4"
+                @click="submit"
+                class="w-full md:w-1/2 md:ml-20 px-6 py-3 rounded-md text-xl font-medium border-0 focus:outline-none focus:ring transition bg-accent"
                 type="submit"
               >
                 Convert
@@ -46,29 +46,31 @@
 </template>
 
 <script>
+import { ref } from "@vue/reactivity";
 import axios from "axios";
 export default {
-  name: "Employe",
-  data() {
-    return {
-      rialValue: 0,
-      usdValueInput: 0,
+  setup() {
+    const rialValue = ref(0);
+    const usdValueInput = ref(0);
+    const fetchPrice = async () => {
+      if (usdValueInput.value) {
+        await axios
+          .get(
+            "http://api.navasan.tech/latest/?api_key=freebRRs75xJEV29utqED6C5h4ZuMhsQ"
+          )
+          .then((res) => {
+            let usd = res.data.usd_sell.value;
+            let change = usdValueInput.value * usd;
+            rialValue.value = change + "0";
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        alert("کسخل مقداری وارد نکردی");
+      }
     };
-  },
-  methods: {
-    // async fetchPrice() {
-    //   await axios
-    //     .get("http://api.navasan.tech/latest/?api_key=freebRRs75xJEV29utqED6C5h4ZuMhsQ")
-    //     .then((res) => {
-    //       console.log(res.data.usd_sell.value);
-    //       let usd = res.data.usd_sell.value;
-    //       let change = this.usdValueInput * usd;
-    //       this.rialValue = change + "0";
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
-    // },
+    return { rialValue, usdValueInput, fetchPrice };
   },
 };
 </script>

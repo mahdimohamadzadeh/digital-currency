@@ -1,8 +1,9 @@
 <template>
   <nav>
     <div
+      :data-theme="theme === 'light' ? 'emerald' : ''"
       v-show="!menu"
-      class="navbar mb-2 shadow-lg bg-neutral text-neutral-content rounded-b-box"
+      class="navbar shadow-lg bg-neutral-focus  text-neutral-content rounded-b-box"
     >
       <div
         class="flex flex-col items-center justify-center drawer-content md:hidden"
@@ -32,7 +33,7 @@
       </div>
 
       <div class="flex-1 px-2 mx-2">
-        <div class="items-stretch hidden lg:flex">
+        <div class="items-stretch hidden md:flex">
           <router-link to="/" class="btn btn-ghost btn-sm rounded-btn">
             Home
           </router-link>
@@ -87,7 +88,7 @@
         </button>
       </div>
     </div>
-    <SideNav :show="menu" @close="onMenu" class="md:hidden" />
+    <SideNav :show="menu" @close="onMenu" :theme="theme" />
   </nav>
 </template>
 
@@ -95,13 +96,17 @@
 import { ref } from "@vue/reactivity";
 import ThemeSwitchButton from "./ThemeSwitchButton.vue";
 import SideNav from "./SideNav.vue";
+import { useStore } from "vuex";
+import { computed } from "@vue/runtime-core";
 export default {
   setup() {
     const menu = ref(false);
+    const store = useStore();
+    const theme = computed(() => store.getters.getTheme);
     const onMenu = () => {
       menu.value = !menu.value;
     };
-    return { menu, onMenu };
+    return { menu, onMenu, theme };
   },
   components: { ThemeSwitchButton, SideNav },
 };
