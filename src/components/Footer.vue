@@ -1,5 +1,8 @@
 <template>
-  <footer class="p-10 footer bg-neutral text-neutral-content mt-16">
+  <footer
+    class="p-10 footer bg-neutral text-neutral-content mt-16"
+    :data-theme="theme === 'light' ? 'emerald' : ''"
+  >
     <div>
       <svg
         width="50"
@@ -64,7 +67,15 @@
 </template>
 
 <script>
+import { computed } from '@vue/runtime-core';
+import { useStore } from 'vuex';
 export default {
   name: "Footer",
+  setup() {
+    const store = useStore();
+    const theme = computed(() => store.getters.getTheme || "dark");
+
+    return { theme };
+  },
 };
 </script>

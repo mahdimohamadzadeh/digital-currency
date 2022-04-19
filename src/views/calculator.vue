@@ -1,13 +1,13 @@
 <template>
-  <div class="Calculator">
+  <div class="Calculator" :data-theme="theme === 'light' ? 'emerald' : ''">
     <!-- component -->
-    
+
     <div
-      class="sm:hidden min-w-screen min-h-full mt-10  flex items-center justify-center px-5 py-5"
+      class="sm:hidden min-w-screen min-h-full mt-10 flex items-center justify-center px-5 py-5"
     >
       <div
         class="w-full mx-auto rounded-xl bg-gray-100 shadow-xl text-gray-800 relative overflow-hidden"
-        style="max-width:300px"
+        style="max-width: 300px"
       >
         <div
           class="w-full h-40 bg-gradient-to-b from-gray-800 to-gray-700 flex items-end text-right"
@@ -186,30 +186,28 @@
     </div>
     <!-- component -->
     <div
-      class="hidden sm:block mx-auto overflow-hidden mt-10 shadow-lg mb-2 bg-purple-900 shadow-lg border rounded-lg md:w-full sm:w-4/6"
+      class="hidden sm:block mx-auto overflow-hidden mt-10 mb-2 bg-purple-900 shadow-2xl rounded-lg md:w-2/3 sm:w-4/6"
     >
       <div class="">
-        <div class="p-5 text-white text-center text-3xl bg-purple-900">
+        <div
+          class="p-5 text-white text-center text-3xl bg-purple-900 font-serif"
+        >
           <span class="text-orange-500">Calcu</span>lator
         </div>
-        <input
-          class="ml-80 p-5 min-w-1/2 rounded-full text-white mb-4  flex justify-center text-center text-3xl bg-purple-800"
-          :value="current || '0'"
-          disabled
-        />
-        <!-- <div
-          class="p-5 text-white text-right text-3xl bg-purple-800 flex justify-center"
-        >
-          = <span class="text-orange-500 ">2100</span>
-        </div> -->
-
+        <div class="w-full h-20 flex justify-center items-center">
+          <input
+            class="rounded-full text-white text-center text-3xl bg-purple-800 py-4"
+            :value="current || '0'"
+            disabled
+          />
+        </div>
         <div class="flex items-stretch bg-purple-900 h-24">
           <div
             class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
           >
             <button
               @click="clearDisplay"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
             >
               AC
             </button>
@@ -219,7 +217,7 @@
           >
             <button
               @click="changeSign"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
             >
               +/-
             </button>
@@ -229,7 +227,7 @@
           >
             <button
               @click="convertPercent"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
             >
               %
             </button>
@@ -240,7 +238,7 @@
           >
             <button
               @click="handleOperator('÷')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
             >
               ÷
             </button>
@@ -253,7 +251,7 @@
           >
             <button
               @click="appendSymbol('7')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
             >
               7
             </button>
@@ -264,7 +262,7 @@
           >
             <button
               @click="appendSymbol('8')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
             >
               8
             </button>
@@ -275,7 +273,7 @@
           >
             <button
               @click="appendSymbol('9')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
             >
               9
             </button>
@@ -286,9 +284,9 @@
           >
             <button
               @click="handleOperator('×')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
             >
-              ×
+              &#215;
             </button>
           </div>
         </div>
@@ -299,7 +297,7 @@
           >
             <button
               @click="appendSymbol('4')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
             >
               4
             </button>
@@ -310,7 +308,7 @@
           >
             <button
               @click="appendSymbol('5')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
             >
               5
             </button>
@@ -321,7 +319,7 @@
           >
             <button
               @click="appendSymbol('6')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
             >
               6
             </button>
@@ -332,7 +330,7 @@
           >
             <button
               @click="handleOperator('-')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
             >
               -
             </button>
@@ -345,7 +343,7 @@
           >
             <button
               @click="appendSymbol('1')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
             >
               1
             </button>
@@ -356,7 +354,7 @@
           >
             <button
               @click="appendSymbol('2')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
             >
               2
             </button>
@@ -367,7 +365,7 @@
           >
             <button
               @click="appendSymbol('3')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
             >
               3
             </button>
@@ -378,46 +376,34 @@
           >
             <button
               @click="handleOperator('+')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
             >
               +
             </button>
           </div>
         </div>
 
-        <div class="flex items-stretch bg-purple-900 h-24 mb-4">
-          <div
-            class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+        <div class="grid grid-cols-6 justify-center bg-purple-900 h-24 my-4">
+          <button
+            @click="appendSymbol('0')"
+            class="text-white text-2xl rounded-full col-start-1 col-end-4 w-2/3  justify-self-center m-2   bg-purple-800  shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
           >
-            <button
-              @click="appendSymbol('0')"
-              class="ml-28 rounded-full h-24 w-56 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
-            >
-              0
-            </button>
-          </div>
+            0
+          </button>
 
-          <div
-            class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+          <button
+            @click="convertDecimal()"
+            class="text-white  rounded-full h-20 w-20 col-start-4 col-end-6 ml-16 text-3xl  bg-purple-800  shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
           >
-            <button
-              @click="convertDecimal()"
-              class="ml-56 rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
-            >
-              .
-            </button>
-          </div>
+            &#183;
+          </button>
 
-          <div
-            class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+          <button
+            @click="handleOperator('=')"
+            class="text-white  rounded-full h-20 w-20 flex items-center text-3xl bg-orange-500 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
           >
-            <button
-              @click="handleOperator('=')"
-              class="ml-20 rounded-full h-20 w-20 flex items-center bg-orange-500 justify-center shadow-lg border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
-            >
-              =
-            </button>
-          </div>
+            &#61;
+          </button>
         </div>
       </div>
     </div>
@@ -461,8 +447,7 @@ export default {
       }
     },
     changeSign() {
-      this.current =
-        this.current.charAt(0) === "-"
+      this.current = this.current.charAt(0) === "-"
           ? this.current.slice(1)
           : `-${this.current}`;
     },

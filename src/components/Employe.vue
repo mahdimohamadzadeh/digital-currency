@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :data-theme="theme === 'light' ? 'emerald' : ''">
     <h1 class="text-2xl font-bold text-center mt-10">Moneye Xchange</h1>
     <!-- component -->
     <div class="flex justify-center min-h-auto antialiased">
@@ -8,12 +8,8 @@
       >
         <!-- header -->
         <div class="text-center m-6">
-          <h3 class="text-3xl font-semibold">
-            Price: {{ rialValue }} <small> rial</small>
-          </h3>
-          <h3 class="text-3xl font-semibold mt-4">
-            USD: {{ usdValueInput }} <small> USD</small>
-          </h3>
+          <h3 class="text-3xl font-semibold">Rial: {{ rialValue }} &#65020;</h3>
+          <h3 class="text-3xl font-semibold mt-4">USD: {{ usdValueInput }} $</h3>
         </div>
         <!-- sign-in -->
         <div class="m-6">
@@ -48,10 +44,16 @@
 <script>
 import { ref } from "@vue/reactivity";
 import axios from "axios";
+import { useStore } from "vuex";
+import { computed } from "@vue/runtime-core";
 export default {
   setup() {
     const rialValue = ref(0);
     const usdValueInput = ref(0);
+
+    const store = useStore();
+    const theme = computed(() => store.getters.getTheme || "dark");
+
     const fetchPrice = async () => {
       if (usdValueInput.value) {
         await axios
@@ -61,7 +63,11 @@ export default {
           .then((res) => {
             let usd = res.data.usd_sell.value;
             let change = usdValueInput.value * usd;
-            rialValue.value = change + "0";
+            const filterChange = (number) => {
+              let toRial = number + "0";
+              return Number(toRial).toLocaleString();
+            };
+            rialValue.value = filterChange(change);
           })
           .catch((err) => {
             console.log(err);
@@ -70,7 +76,7 @@ export default {
         alert("کسخل مقداری وارد نکردی");
       }
     };
-    return { rialValue, usdValueInput, fetchPrice };
+    return { rialValue, usdValueInput, fetchPrice, theme };
   },
 };
 </script>

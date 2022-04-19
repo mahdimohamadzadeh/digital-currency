@@ -95,6 +95,8 @@
 </template>
 
 <script>
+import { computed } from '@vue/runtime-core';
+import { useStore } from 'vuex';
 export default {
   name: "TheSidenav",
   props: {
@@ -103,9 +105,15 @@ export default {
       default: false,
     },
     theme: {
-      type: [String,Boolean],
+      type: [String, Boolean],
       default: "light",
     },
+  },
+  setup() {
+    const store = useStore();
+    const theme = computed(() => store.getters.getTheme || "dark");
+
+    return { theme };
   },
 };
 </script>
