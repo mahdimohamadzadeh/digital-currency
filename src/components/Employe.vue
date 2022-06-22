@@ -73,7 +73,7 @@ export default {
             console.log(err);
           });
       } else {
-        alert("کسخل مقداری وارد نکردی");
+        alert(" مقداری وارد نکردی");
       }
     };
     return { rialValue, usdValueInput, fetchPrice, theme };
