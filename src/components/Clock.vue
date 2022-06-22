@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-center lg:absolute lg:top-8   my-10"
+    class="flex justify-center lg:absolute lg:top-8 my-10"
     :data-theme="theme === 'light' ? 'emerald' : ''"
   >
     <div class="mt-2 p-2 w-40 bg-accent rounded-lg shadow-xl">
@@ -16,38 +16,32 @@
 </template>
 
 <script>
-import { computed } from "@vue/runtime-core";
+import { computed, onMounted, ref } from "@vue/runtime-core";
 import { useStore } from "vuex";
 export default {
   name: "Clock",
-  data() {
-    return {
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
+  setup() {
+    const hours = ref(0);
+    const minutes = ref(0);
+    const seconds = ref(0);
+    const checkSingleDigit = (digit) => {
+      return ("0" + digit).slice(-2);
     };
-  },
-  methods: {
-    setTime() {
+    const setTime = () => {
       setInterval(() => {
         const date = new Date();
-        this.hours = date.getHours();
-        this.minutes = this.checkSingleDigit(date.getMinutes());
-        this.seconds = this.checkSingleDigit(date.getSeconds());
+        hours.value = date.getHours();
+        minutes.value = checkSingleDigit(date.getMinutes());
+        seconds.value = checkSingleDigit(date.getSeconds());
       }, 0);
-    },
-    checkSingleDigit(digit) {
-      return ("0" + digit).slice(-2);
-    },
-  },
-  mounted() {
-    this.setTime();
-  },
-  setup() {
+    };
+    onMounted(() => {
+      setTime();
+    });
     const store = useStore();
     const theme = computed(() => store.getters.getTheme || "dark");
 
-    return { theme };
+    return { theme, hours, minutes, seconds };
   },
 };
 </script>

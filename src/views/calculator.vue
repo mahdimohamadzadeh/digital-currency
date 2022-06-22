@@ -386,21 +386,21 @@
         <div class="grid grid-cols-6 justify-center bg-purple-900 h-24 my-4">
           <button
             @click="appendSymbol('0')"
-            class="text-white text-2xl rounded-full col-start-1 col-end-4 w-2/3  justify-self-center m-2   bg-purple-800  shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+            class="text-white text-2xl rounded-full col-start-1 col-end-4 w-2/3 justify-self-center m-2 bg-purple-800 shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
           >
             0
           </button>
 
           <button
             @click="convertDecimal()"
-            class="text-white  rounded-full h-20 w-20 col-start-4 col-end-6 ml-16 text-3xl  bg-purple-800  shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+            class="text-white rounded-full h-20 w-20 col-start-4 col-end-6 ml-16 text-3xl bg-purple-800 shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
           >
             &#183;
           </button>
 
           <button
             @click="handleOperator('=')"
-            class="text-white  rounded-full h-20 w-20 flex items-center text-3xl bg-orange-500 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+            class="text-white rounded-full h-20 w-20 flex items-center text-3xl bg-orange-500 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
           >
             &#61;
           </button>
@@ -447,7 +447,8 @@ export default {
       }
     },
     changeSign() {
-      this.current = this.current.charAt(0) === "-"
+      this.current =
+        this.current.charAt(0) === "-"
           ? this.current.slice(1)
           : `-${this.current}`;
     },
