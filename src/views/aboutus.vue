@@ -1,19 +1,18 @@
 <template>
   <div :data-theme="theme === 'light' ? 'emerald' : ''">
-    <div class="mt-10 md:mt-32 container  mx-auto">
+    <div class="mt-10 md:mt-32 container mx-auto">
       <div class="w-full grid grid-rows-2 md:grid-cols-2">
-          <img
-            class="h-96 w-11/12 md:w-full mx-auto object-cover rounded-2xl"
-            v-lazy="{
-              src: 'http://localhost:3000/src/assets/image/about.jpg',
-              loading:
-                'http://localhost:3000/src/assets/image/loadingAbout.jpg',
-              error: 'http://localhost:3000/src/assets/image/errorAbout.png',
-              delay: 500,
-            }"
-          />
+        <img
+          class="h-96 w-11/12 md:w-full mx-auto object-cover rounded-2xl"
+          v-lazy="{
+            src: aboutImage,
+            loading: loadingAboutImage,
+            error: errorAboutImage,
+            delay: 500,
+          }"
+        />
 
-        <div class="flex p-10 mt-4 md:mt-0 md:pt-0 lg:py-8  flex-col">
+        <div class="flex p-10 mt-4 md:mt-0 md:pt-0 lg:py-8 flex-col">
           <h1 class="text-3xl uppercase">Mahdi Mohammadzadeh</h1>
           <p class="font-semibold mt-1">Web Developer</p>
           <p class="mt-16">
@@ -43,8 +42,17 @@ export default {
   setup() {
     const store = useStore();
     const theme = computed(() => store.getters.getTheme || "dark");
-
-    return { theme };
+    const aboutImage = new URL("../assets/image/about.jpg", import.meta.url)
+      .href;
+    const loadingAboutImage = new URL(
+      "../assets/image/loadingAbout.jpg",
+      import.meta.url
+    ).href;
+    const errorAboutImage = new URL(
+      "../assets/image/errorAbout.png",
+      import.meta.url
+    ).href;
+    return { theme, aboutImage, loadingAboutImage, errorAboutImage };
   },
 };
 </script>
