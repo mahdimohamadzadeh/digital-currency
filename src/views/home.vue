@@ -1,17 +1,11 @@
 <template>
-  <div class="home">
+  <div class="container mx-auto">
     <Clock />
     <Employe />
   </div>
 </template>
 
-<script>
+<script setup>
 import Clock from "../components/Clock.vue";
 import Employe from "../components/Employe.vue";
-export default {
-  components: {
-    Employe,
-    Clock,
-  },
-};
 </script>

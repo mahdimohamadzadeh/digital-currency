@@ -1,7 +1,7 @@
 <template>
   <div id="app" :data-theme="theme === 'light' ? 'emerald' : ''">
-    <Navbar />
-    <router-view class="container mx-auto px-4" />
+    <Navbar  />
+    <router-view />
     <Footer />
   </div>
 </template>

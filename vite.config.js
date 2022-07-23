@@ -1,17 +1,22 @@
-import {
-  defineConfig
-} from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from "vite";
+import path from "path";
+import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
   plugins: [vue()],
-  // resolve: {
-  //   alias: {
-  //     "@": path.resolve(__dirname, "./src"),
-  //   },
-  //   extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
-  // },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
+  },
   server: {
-    host: true
-  }
-})
+    host: true,
+  },
+  proxy: {
+    "^/api": {
+      target: "https://www.megaweb.ir/api/money",
+      changeOrigin: true,
+    },
+  },
+});

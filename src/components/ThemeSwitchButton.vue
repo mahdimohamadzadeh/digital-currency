@@ -4,7 +4,7 @@
     <input
       type="checkbox"
       checked="checked"
-      class="toggle toggle-md toggle-accent"
+      class="toggle toggle-md toggle-accent w-12 h-6"
       @click="toggleTheme"
     />
 
