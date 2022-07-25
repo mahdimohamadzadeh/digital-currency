@@ -39,7 +39,7 @@ import { useStore } from "vuex";
 export default {
   setup() {
     const store = useStore();
-    const theme = computed(() => store.getters.getTheme || "dark");
+    const theme = computed(() => store.getters.getTheme);
     const toggleTheme = () => {
       store.dispatch("toggleTheme");
     };

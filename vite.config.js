@@ -8,15 +8,9 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
-    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json', '.vue'],
+    extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", ".vue"],
   },
   server: {
     host: true,
-  },
-  proxy: {
-    "^/api": {
-      target: "https://www.megaweb.ir/api/money",
-      changeOrigin: true,
-    },
   },
 });

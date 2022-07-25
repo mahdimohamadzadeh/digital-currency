@@ -4,7 +4,7 @@ import {
 
 export default createStore({
     state: {
-        theme: "",
+        theme: "dark",
     },
     mutations: {
         SET_THEME(state, theme) {
