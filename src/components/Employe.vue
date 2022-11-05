@@ -64,7 +64,7 @@ export default {
         isLoading.value = true;
         await axios
           .get(
-            "http://api.navasan.tech/latest/?api_key=freeAflR4IKxGMt7N14G4YjEy9CVhenb"
+            "http://api.navasan.tech/latest/?api_key=freeyqRYGqLoQjgnJIswvIXJsY4yzyzw"
           )
           .then((res) => {
             let usd = res.data.usd_sell.value;
