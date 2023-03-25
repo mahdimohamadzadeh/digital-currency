@@ -1,10 +1,8 @@
 <template>
-  <div class="" :data-theme="theme === 'light' ? 'emerald' : ''">
-    <h1 class="text-2xl font-bold text-center my-10">Moneye Xchange</h1>
-    <div class=" mx-3 md:flex md:justify-center antialiased">
-      <div
-        class=" sm:mt-10 mt-4 my-auto max-w-md p-3 bg-primary rounded-3xl"
-      >
+  <h1 class="text-3xl font-bold text-center my-10">Moneye Xchange</h1>
+  <div class="md:mt-32">
+    <div class="mx-3 md:flex md:justify-center antialiased">
+      <div class="sm:mt-10 p-8 mt-4 my-auto max-w-md rounded-3xl bg-neutral">
         <div class="text-center m-6">
           <h3 class="text-3xl font-semibold">Rial: {{ rialValue }} &#65020;</h3>
           <h3 class="text-3xl font-semibold mt-4 flex justify-center">
@@ -20,15 +18,14 @@
                   min="0"
                   v-model="usdValueInput"
                   placeholder="Enter USD price..."
-                  class="input focus:outline-none w-full md:w-60 md:ml-16 px-3 py-2"
+                  class="input input-bordered input-accent focus:outline-none ml-2 lg:ml-10 w-2/3 md:w-60 md:ml-16 px-3 py-2"
                 />
-                <span>USD</span>
+                <span class="border-2 border-accent text-xl">USD</span>
               </label>
             </div>
-            <div class="my-6">
+            <div class="my-10">
               <button
-                @click="submit"
-                class="btn md:w-1/2  px-6 py-3 rounded-md text-xl font-medium border-0 focus:outline-none focus:ring transition bg-accent"
+                class="btn md:w-1/2 rounded-md text-xl bg-accent text-neutral hover:bg-info"
                 type="submit"
                 :class="{ loading: isLoading }"
               >
@@ -64,7 +61,7 @@ export default {
         isLoading.value = true;
         await axios
           .get(
-            "http://api.navasan.tech/latest/?api_key=freeyqRYGqLoQjgnJIswvIXJsY4yzyzw"
+            "http://api.navasan.tech/latest/?api_key=freeKiD737r8SxuVYd6vnhkzKVPBuap6"
           )
           .then((res) => {
             let usd = res.data.usd_sell.value;

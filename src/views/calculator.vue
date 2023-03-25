@@ -1,5 +1,5 @@
 <template>
-  <div class="Calculator" :data-theme="theme === 'light' ? 'emerald' : ''">
+  <div class="Calculator">
     <!-- component -->
 
     <div
@@ -186,224 +186,234 @@
     </div>
     <!-- component -->
     <div
-      class="hidden sm:block mx-auto overflow-hidden mt-10 mb-2 bg-purple-900 shadow-2xl rounded-lg md:w-2/3 sm:w-4/6"
+      class="hidden sm:block mx-auto overflow-hidden mt-10 mb-2 bg-neutral shadow-2xl rounded-lg md:w-2/3 sm:w-4/6"
     >
       <div class="">
-        <div
-          class="p-5 text-white text-center text-3xl bg-purple-900 font-serif"
-        >
-          <span class="text-orange-500">Calcu</span>lator
-        </div>
+        <div class="p-5 text-center text-3xl">Calculator</div>
         <div class="w-full h-20 flex justify-center items-center">
           <input
-            class="rounded-full text-white text-center text-3xl bg-purple-800 py-4"
+            class="input input-primary rounded-full text-center text-3xl py-4"
             :value="current || '0'"
             disabled
           />
         </div>
-        <div class="flex items-stretch bg-purple-900 h-24">
+        <div class="flex items-stretch bg-neutral h-24">
           <div
-            class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            class="flex-1 px-2 py-2 justify-center flex items-center text-2xl font-semibold"
           >
             <button
               @click="clearDisplay"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center justify-center shadow-xl hover:border-2 hover:border-primary"
             >
               AC
             </button>
           </div>
           <div
-            class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            class="flex-1 px-2 py-2 justify-center flex items-center text-2xl font-semibold"
           >
             <button
               @click="changeSign"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center justify-center shadow-xl hover:border-2 hover:border-primary"
             >
               +/-
             </button>
           </div>
           <div
-            class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            class="flex-1 px-2 py-2 justify-center flex items-center text-2xl font-semibold"
           >
             <button
               @click="convertPercent"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center justify-center shadow-xl hover:border-2 hover:border-primary"
             >
               %
             </button>
           </div>
 
           <div
-            class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            class="flex-1 px-2 py-2 justify-center flex items-center text-2xl font-semibold"
           >
             <button
               @click="handleOperator('÷')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center justify-center shadow-xl hover:border-2 hover:border-primary"
             >
               ÷
             </button>
           </div>
         </div>
 
-        <div class="flex items-stretch bg-purple-900 h-24">
+        <div class="flex items-stretch bg-neutral h-24">
           <div
-            class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            class="flex-1 px-2 py-2 justify-center flex items-center text-2xl font-semibold"
           >
             <button
               @click="appendSymbol('7')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center justify-center shadow-xl hover:border-2 hover:border-primary"
             >
               7
             </button>
           </div>
 
           <div
-            class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            class="flex-1 px-2 py-2 justify-center flex items-center text-2xl font-semibold"
           >
             <button
               @click="appendSymbol('8')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center justify-center shadow-xl hover:border-2 hover:border-primary"
             >
               8
             </button>
           </div>
 
           <div
-            class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            class="flex-1 px-2 py-2 justify-center flex items-center text-2xl font-semibold"
           >
             <button
               @click="appendSymbol('9')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center justify-center shadow-xl hover:border-2 hover:border-primary"
             >
               9
             </button>
           </div>
 
           <div
-            class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            class="flex-1 px-2 py-2 justify-center flex items-center text-2xl font-semibold"
           >
             <button
               @click="handleOperator('×')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center justify-center shadow-xl hover:border-2 hover:border-primary"
             >
               &#215;
             </button>
           </div>
         </div>
 
-        <div class="flex items-stretch bg-purple-900 h-24">
+        <div class="flex items-stretch bg-neutral h-24">
           <div
-            class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            class="flex-1 px-2 py-2 justify-center flex items-center text-2xl font-semibold"
           >
             <button
               @click="appendSymbol('4')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center justify-center shadow-xl hover:border-2 hover:border-primary"
             >
               4
             </button>
           </div>
 
           <div
-            class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            class="flex-1 px-2 py-2 justify-center flex items-center text-2xl font-semibold"
           >
             <button
               @click="appendSymbol('5')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center justify-center shadow-xl hover:border-2 hover:border-primary"
             >
               5
             </button>
           </div>
 
           <div
-            class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            class="flex-1 px-2 py-2 justify-center flex items-center text-2xl font-semibold"
           >
             <button
               @click="appendSymbol('6')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center justify-center shadow-xl hover:border-2 hover:border-primary"
             >
               6
             </button>
           </div>
 
           <div
-            class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            class="flex-1 px-2 py-2 justify-center flex items-center text-2xl font-semibold"
           >
             <button
               @click="handleOperator('-')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center justify-center shadow-xl hover:border-2 hover:border-primary"
             >
               -
             </button>
           </div>
         </div>
 
-        <div class="flex items-stretch bg-purple-900 h-24">
+        <div class="flex items-stretch bg-neutral h-24">
           <div
-            class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            class="flex-1 px-2 py-2 justify-center flex items-center text-2xl font-semibold"
           >
             <button
               @click="appendSymbol('1')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center justify-center shadow-xl hover:border-2 hover:border-primary"
             >
               1
             </button>
           </div>
 
           <div
-            class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            class="flex-1 px-2 py-2 justify-center flex items-center text-2xl font-semibold"
           >
             <button
               @click="appendSymbol('2')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center justify-center shadow-xl hover:border-2 hover:border-primary"
             >
               2
             </button>
           </div>
 
           <div
-            class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            class="flex-1 px-2 py-2 justify-center flex items-center text-2xl font-semibold"
           >
             <button
               @click="appendSymbol('3')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center justify-center shadow-xl hover:border-2 hover:border-primary"
             >
               3
             </button>
           </div>
 
           <div
-            class="flex-1 px-2 py-2 justify-center flex items-center text-white text-2xl font-semibold"
+            class="flex-1 px-2 py-2 justify-center flex items-center text-2xl font-semibold"
           >
             <button
               @click="handleOperator('+')"
-              class="rounded-full h-20 w-20 flex items-center bg-purple-800 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+              class="rounded-full h-20 w-20 flex items-center justify-center shadow-xl hover:border-2 hover:border-primary"
             >
               +
             </button>
           </div>
         </div>
 
-        <div class="grid grid-cols-6 justify-center bg-purple-900 h-24 my-4">
-          <button
-            @click="appendSymbol('0')"
-            class="text-white text-2xl rounded-full col-start-1 col-end-4 w-2/3 justify-self-center m-2 bg-purple-800 shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+        <div class="flex items-stretch bg-neutral h-24">
+          <div
+            class="flex-1 px-2 py-2 justify-center flex items-center text-2xl font-semibold"
+          ></div>
+          <div
+            class="flex-1 px-2 py-2 justify-center flex items-center text-2xl font-semibold"
           >
-            0
-          </button>
+            <button
+              @click="appendSymbol('0')"
+              class="rounded-full h-20 w-20 flex items-center justify-center shadow-xl hover:border-2 hover:border-primary"
+            >
+              0
+            </button>
+          </div>
 
-          <button
-            @click="convertDecimal()"
-            class="text-white rounded-full h-20 w-20 col-start-4 col-end-6 ml-16 text-3xl bg-purple-800 shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+          <div
+            class="flex-1 px-2 py-2 justify-center flex items-center text-2xl font-semibold"
           >
-            &#183;
-          </button>
-
-          <button
-            @click="handleOperator('=')"
-            class="text-white rounded-full h-20 w-20 flex items-center text-3xl bg-orange-500 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+            <button
+              @click="convertDecimal()"
+              class="rounded-full h-20 w-20 flex items-center justify-center shadow-xl hover:border-2 hover:border-primary"
+            >
+              &#183;
+            </button>
+          </div>
+          <div
+            class="flex-1 px-2 py-2 justify-center flex items-center text-2xl font-semibold"
           >
-            &#61;
-          </button>
+            <button
+              @click="handleOperator('=')"
+              class="text-white rounded-full h-20 w-20 flex items-center text-3xl bg-orange-500 justify-center shadow-xl border-2 border-purple-700 hover:border-2 hover:border-gray-500 focus:outline-none"
+            >
+              &#61;
+            </button>
+          </div>
         </div>
       </div>
     </div>

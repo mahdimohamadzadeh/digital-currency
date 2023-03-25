@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto">
+  <div class="container mx-auto bg-base-100 my-auto">
     <Clock />
     <Employe />
   </div>

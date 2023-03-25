@@ -1,47 +1,41 @@
-import {
-    createStore
-} from "vuex";
+import { createStore } from "vuex";
 
 export default createStore({
-    state: {
-        theme: "dark",
+  state: {
+    theme: "darkTheme",
+  },
+  mutations: {
+    SET_THEME(state, theme) {
+      state.theme = theme;
+      localStorage.theme = theme;
     },
-    mutations: {
-        SET_THEME(state, theme) {
-            state.theme = theme;
-            localStorage.theme = theme;
-        },
+  },
+  actions: {
+    initTheme({ commit }) {
+      const cachedTheme = localStorage.theme ? localStorage.theme : false;
+      //  `true` if the user has set theme to `dark` on browser/OS
+      const userPrefersDark = window.matchMedia(
+        "(prefers-color-scheme: darkTheme)"
+      ).matches;
+      if (cachedTheme) commit("SET_THEME", cachedTheme);
+      else if (userPrefersDark) commit("SET_THEME", "darkTheme");
+      else commit("SET_THEME", "darkTheme");
     },
-    actions: {
-        initTheme({
-            commit
-        }) {
-            const cachedTheme = localStorage.theme ? localStorage.theme : false;
-            //  `true` if the user has set theme to `dark` on browser/OS
-            const userPrefersDark = window.matchMedia(
-                "(prefers-color-scheme: dark)"
-            ).matches;
-            if (cachedTheme) commit("SET_THEME", cachedTheme);
-            else if (userPrefersDark) commit("SET_THEME", "dark");
-            else commit("SET_THEME", "dark");
-        },
-        toggleTheme({
-            commit
-        }) {
-            switch (localStorage.theme) {
-                case "light":
-                    commit("SET_THEME", "dark");
-                    break;
+    toggleTheme({ commit }) {
+      switch (localStorage.theme) {
+        case "darkTheme":
+          commit("SET_THEME", "lightTheme");
+          break;
 
-                default:
-                    commit("SET_THEME", "light");
-                    break;
-            }
-        },
+        default:
+          commit("SET_THEME", "darkTheme");
+          break;
+      }
     },
-    getters: {
-        getTheme: (state) => {
-            return state.theme;
-        },
+  },
+  getters: {
+    getTheme: (state) => {
+      return state.theme;
     },
+  },
 });

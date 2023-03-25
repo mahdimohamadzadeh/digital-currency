@@ -1,11 +1,8 @@
 <template>
-  <div
-    class="flex justify-center lg:absolute lg:top-8 my-10"
-    :data-theme="theme === 'light' ? 'emerald' : ''"
-  >
+  <div class="flex justify-center lg:absolute lg:top-14 my-10">
     <div class="mt-2 p-2 w-40 bg-accent rounded-lg shadow-xl">
       <div
-        class="flex justify-center align-center w-28 h-14 rounded-xl text-3xl p-2 mx-4 my-2"
+        class="flex justify-center text-secondary align-center w-28 h-14 rounded-xl text-3xl p-2 mx-4 my-2"
       >
         <div class="">{{ hours }}:</div>
         <div class="">{{ minutes }}:</div>

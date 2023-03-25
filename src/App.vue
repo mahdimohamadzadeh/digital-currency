@@ -1,14 +1,12 @@
 <template>
-  <div id="app" :data-theme="theme === 'light' ? 'emerald' : ''">
-    <Navbar  />
+  <div id="app" class="w-full h-screen" data-theme="darkTheme">
+    <Navbar />
     <router-view />
-    <Footer />
   </div>
 </template>
 
 <script>
 import Navbar from "./components/Navbar.vue";
-import Footer from "./components/Footer.vue";
 import { useStore } from "vuex";
 import { computed } from "@vue/runtime-core";
 export default {
@@ -20,7 +18,6 @@ export default {
   },
   components: {
     Navbar,
-    Footer,
   },
 };
 </script>

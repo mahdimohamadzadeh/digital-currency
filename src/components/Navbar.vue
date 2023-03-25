@@ -1,10 +1,6 @@
 <template>
   <nav>
-    <div
-      :data-theme="theme === 'light' ? 'emerald' : ''"
-      v-show="!menu"
-      class="navbar shadow-lg bg-neutral-focus  text-neutral-content rounded-b-box "
-    >
+    <div v-show="!menu" class="navbar shadow-lg bg-neutral rounded-b-box">
       <div
         class="flex flex-col items-center justify-center drawer-content md:hidden"
       >

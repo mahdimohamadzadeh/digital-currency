@@ -9,5 +9,5 @@ import store from "./store";
 const app = createApp(App);
 app.use(router);
 app.use(store);
-app.use(VueLazyLoad)
+app.use(VueLazyLoad);
 app.mount("#app");
