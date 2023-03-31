@@ -1,11 +1,17 @@
 <template>
-  <div class="container mx-auto bg-base-100 my-auto">
+  <div class="bg-base-100">
     <Clock />
-    <Employe />
+    <currencyTable />
   </div>
 </template>
 
 <script setup>
+import { onMounted } from "vue";
+import { useCurrencyStore } from "@/stores/currency";
 import Clock from "../components/Clock.vue";
 import Employe from "../components/Employe.vue";
+const store = useCurrencyStore();
+onMounted(() => {
+  store.getPriceCurrency();
+});
 </script>

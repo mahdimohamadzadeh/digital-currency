@@ -1,18 +1,18 @@
 <template>
   <div id="app" class="w-full h-screen" data-theme="darkTheme">
     <Navbar />
-    <router-view />
+    <router-view class="container mx-auto" />
   </div>
 </template>
 
 <script>
 import Navbar from "./components/Navbar.vue";
-import { useStore } from "vuex";
 import { computed } from "@vue/runtime-core";
+import { useThemeStore } from "@/stores/theme";
 export default {
   setup() {
-    const store = useStore();
-    const theme = computed(() => store.getters.getTheme);
+    const store = useThemeStore();
+    const theme = computed(() => store.getTheme);
 
     return { theme };
   },

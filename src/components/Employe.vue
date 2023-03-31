@@ -1,6 +1,6 @@
 <template>
-  <h1 class="text-3xl font-bold text-center my-10">Moneye Xchange</h1>
-  <div class="md:mt-32">
+  <h1 class="text-3xl font-bold text-center mb-10">Moneye Xchange</h1>
+  <div class="">
     <div class="mx-3 md:flex md:justify-center antialiased">
       <div class="sm:mt-10 p-8 mt-4 my-auto max-w-md rounded-3xl bg-neutral">
         <div class="text-center m-6">
@@ -43,7 +43,7 @@
 <script>
 import { ref } from "@vue/reactivity";
 import axios from "axios";
-import { useStore } from "vuex";
+import { useThemeStore } from "@/stores/theme";
 import { computed } from "@vue/runtime-core";
 import Swal from "sweetalert2";
 import { CurrencyUsd } from "mdue";
@@ -53,8 +53,8 @@ export default {
     const rialValue = ref(null);
     const usdValueInput = ref(null);
     const isLoading = ref(false);
-    const store = useStore();
-    const theme = computed(() => store.getters.getTheme || "dark");
+    const store = useThemeStore();
+    const theme = computed(() => store.getTheme || "darkTheme");
 
     const fetchPrice = async () => {
       if (usdValueInput.value > 0) {

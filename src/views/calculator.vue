@@ -1,5 +1,5 @@
 <template>
-  <div class="Calculator">
+  <div class="grid h-screen place-items-center">
     <!-- component -->
 
     <div

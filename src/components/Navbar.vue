@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <div v-show="!menu" class="navbar shadow-lg bg-neutral rounded-b-box">
+    <div v-show="!menu" class="navbar shadow-lg bg-neutral rounded-b-box fixed top-0">
       <div
         class="flex flex-col items-center justify-center drawer-content md:hidden"
       >
@@ -33,13 +33,16 @@
           <router-link to="/" class="btn btn-ghost btn-sm rounded-btn">
             Home
           </router-link>
+          <router-link :to="{name:'exchangePage'}" class="btn btn-ghost btn-sm rounded-btn">
+            exchange
+          </router-link>
           <router-link
-            to="/calculator"
+            :to="{name:'calculatorPage'}"
             class="btn btn-ghost btn-sm rounded-btn"
           >
             Calculator
           </router-link>
-          <router-link to="/aboutus" class="btn btn-ghost btn-sm rounded-btn">
+          <router-link :to="{name:'aboutUsPage'}" class="btn btn-ghost btn-sm rounded-btn">
             AboutUs
           </router-link>
         </div>
@@ -58,13 +61,13 @@
 import { ref } from "@vue/reactivity";
 import ThemeSwitchButton from "./ThemeSwitchButton.vue";
 import SideNav from "./SideNav.vue";
-import { useStore } from "vuex";
+import { useThemeStore } from "@/stores/theme";
 import { computed } from "@vue/runtime-core";
 export default {
   setup() {
     const menu = ref(false);
-    const store = useStore();
-    const theme = computed(() => store.getters.getTheme);
+    const store = useThemeStore();
+    const theme = computed(() => store.getTheme || "darkTheme");
     const onMenu = () => {
       menu.value = !menu.value;
     };

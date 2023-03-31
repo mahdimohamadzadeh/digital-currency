@@ -34,14 +34,14 @@
 
 <script>
 import { computed } from "@vue/runtime-core";
-import { useStore } from "vuex";
+import { useThemeStore } from '@/stores/theme'
 
 export default {
   setup() {
-    const store = useStore();
-    const theme = computed(() => store.getters.getTheme);
+    const store = useThemeStore()
+    const theme = computed(() => store.getTheme);
     const toggleTheme = () => {
-      store.dispatch("toggleTheme");
+      store.toggleTheme()
     };
 
     return { theme, toggleTheme };

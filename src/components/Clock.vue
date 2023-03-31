@@ -14,7 +14,7 @@
 
 <script>
 import { computed, onMounted, ref } from "@vue/runtime-core";
-import { useStore } from "vuex";
+import { useThemeStore } from "@/stores/theme";
 export default {
   name: "Clock",
   setup() {
@@ -35,8 +35,8 @@ export default {
     onMounted(() => {
       setTime();
     });
-    const store = useStore();
-    const theme = computed(() => store.getters.getTheme || "dark");
+    const store = useThemeStore();
+    const theme = computed(() => store.getTheme || "darkTheme");
 
     return { theme, hours, minutes, seconds };
   },
