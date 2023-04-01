@@ -1,66 +1,60 @@
 <template>
-  <div class="card w-full bg-white mt-6 h-1/2 md:h-auto">
+  <div class="card w-full">
     <div class="card-body">
-      <div class="overflow-x-auto">
-        <table class="table w-full">
+      <div class="overflow-x-auto shadow-lg">
+        <table class="table w-full table-normal">
           <!-- head -->
           <thead>
             <tr>
               <th>#</th>
+              <th>name</th>
               <th>
-                name
+                <div
+                  class="tooltip tooltip-primary my-4"
+                  data-tip="Current price of currency"
+                >
+                  Price
+                </div>
               </th>
               <th>
-                Symbol
+                <div
+                  class="tooltip tooltip-primary my-4"
+                  data-tip="Changes in the last 1 hours"
+                >
+                  1h
+                </div>
               </th>
               <th>
-                Price
+                <div
+                  class="tooltip tooltip-primary my-4"
+                  data-tip="Changes in the last 24 hours"
+                >
+                  24h
+                </div>
               </th>
+              <th>market</th>
             </tr>
           </thead>
           <tbody>
             <!-- rows -->
-            <tr v-for="body in tableDetail.body" :key="body.id">
-              <th>{{ id }}</th>
-              <td v-for="(name, index) in body.names" :key="index">
-                {{ name }}
-              </td>
-              <td v-if="body.image">
-                <img
-                  class="w-10 h-10"
-                  :src="require(`@/assets/images/${body.image.name}`)"
-                  :alt="body.image.alt"
-                />
-              </td>
-              <td v-for="checkBox in body.checkboxes">
-                <div class="flex items-center mr-4">
-                  <input
-                    :id="checkBox.id"
-                    type="checkbox"
-                    v-model="checkBox.value"
-                    :value="checkBox.value"
-                    class="w-4 h-4 rounded-full checked:bg-accent"
-                  />
-                  <label
-                    v-if="checkBox.value === false"
-                    :for="checkBox.id"
-                    class="badge badge-warning text-sm mr-1 font-medium"
-                    >غیرفعال</label
-                  >
+            <tr v-for="(item, index) in currencies" :key="item.id">
+              <th>{{ index + 1 }}</th>
+              <td>
+                <div class="flex w-1/2 items-center">
+                  <i
+                    ><img
+                      class="w-8 h-8"
+                      :src="item.imageUrl"
+                      alt="symbol icon"
+                  /></i>
+                  <span class="mx-2 font-bold">{{ item.name }}</span>
+                  {{ item.symbol }}
                 </div>
               </td>
-              <td v-if="body.buttons">
-                <button
-                  v-for="btn in body.buttons"
-                  class="btn ml-4 text-white"
-                  :class="btn.color"
-                >
-                  <slot v-if="btn.id === 1" name="firstIcon"></slot>
-                  <slot v-if="btn.id === 2" name="secondIcon"></slot>
-                  <slot></slot>
-                  {{ btn.name }}
-                </button>
-              </td>
+              <td>{{ item.price }}</td>
+              <td>{{ item.changehour }}</td>
+              <td>{{ item.changeDay }}</td>
+              <td>{{ item.market }}</td>
             </tr>
           </tbody>
         </table>
@@ -69,10 +63,10 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: ["tableDetail"],
-};
+<script setup>
+const props = defineProps({
+  currencies: Object,
+});
 </script>
 
 <style lang="scss" scoped></style>

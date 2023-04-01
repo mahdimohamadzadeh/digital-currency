@@ -1,21 +1,18 @@
 <template>
-    <div class="grid h-screen place-items-center">
-        <div class="w-full">
-            <Clock />
-            <Employe class=""/>
-        </div>
+  <div class="grid place-items-center mt-52">
+    <div class="w-full">
+      <secondClock />
+      <Employe />
     </div>
+  </div>
 </template>
 
 <script>
-import Clock from '../components/Clock.vue'
-import Employe from '../components/Employe.vue'
-    export default {
-  components: { Employe, Clock },
-        
-    }
+import Employe from "../components/Employe.vue";
+import secondClock from "../components/secondClock.vue";
+export default {
+  components: { Employe, secondClock },
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

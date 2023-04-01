@@ -1,9 +1,9 @@
 <template>
-  <div class="grid h-screen place-items-center">
+  <div class="grid place-items-center h-screen">
     <!-- component -->
 
     <div
-      class="sm:hidden min-w-screen min-h-full mt-10 flex items-center justify-center px-5 py-5"
+      class="sm:hidden min-w-screen min-h-full flex items-center justify-center px-5 py-5"
     >
       <div
         class="w-full mx-auto rounded-xl bg-gray-100 shadow-xl text-gray-800 relative overflow-hidden"

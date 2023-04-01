@@ -31,7 +31,7 @@
 
 <script>
 import { computed, ref } from "@vue/runtime-core";
-import { useThemeStore } from '@/stores/theme'
+import { useThemeStore } from "@/stores/theme";
 import axios from "axios";
 export default {
   setup() {

@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="w-full h-screen" data-theme="darkTheme">
+  <div id="app" class="w-full" data-theme="darkTheme">
     <Navbar />
     <router-view class="container mx-auto" />
   </div>
@@ -7,13 +7,17 @@
 
 <script>
 import Navbar from "./components/Navbar.vue";
-import { computed } from "@vue/runtime-core";
+import { computed, onMounted } from "@vue/runtime-core";
 import { useThemeStore } from "@/stores/theme";
+import { useCurrencyStore } from "@/stores/currency";
 export default {
   setup() {
-    const store = useThemeStore();
-    const theme = computed(() => store.getTheme);
-
+    const themeStore = useThemeStore();
+    const currencyStore = useCurrencyStore();
+    const theme = computed(() => themeStore.getTheme);
+    onMounted(async () => {
+      await currencyStore.getDetailOfCurrency();
+    });
     return { theme };
   },
   components: {

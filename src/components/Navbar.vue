@@ -25,7 +25,7 @@
         </label>
       </div>
       <div class="flex-none px-2 mx-2">
-        <span class="text-lg font-bold"> change-money </span>
+        <span class="text-lg font-bold"> Digital Currency </span>
       </div>
 
       <div class="flex-1 px-2 mx-2">

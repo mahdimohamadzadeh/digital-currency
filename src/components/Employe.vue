@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-3xl font-bold text-center mb-10">Moneye Xchange</h1>
+  <h1 class="text-3xl font-bold text-center">Moneye Xchange</h1>
   <div class="">
     <div class="mx-3 md:flex md:justify-center antialiased">
       <div class="sm:mt-10 p-8 mt-4 my-auto max-w-md rounded-3xl bg-neutral">
