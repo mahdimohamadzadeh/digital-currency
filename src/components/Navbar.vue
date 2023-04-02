@@ -1,6 +1,9 @@
 <template>
   <nav>
-    <div v-show="!menu" class="navbar shadow-lg bg-neutral rounded-b-box fixed top-0">
+    <div
+      v-show="!menu"
+      class="z-50 navbar shadow-lg bg-neutral rounded-b-box fixed top-0"
+    >
       <div
         class="flex flex-col items-center justify-center drawer-content md:hidden"
       >
@@ -33,16 +36,22 @@
           <router-link to="/" class="btn btn-ghost btn-sm rounded-btn">
             Home
           </router-link>
-          <router-link :to="{name:'exchangePage'}" class="btn btn-ghost btn-sm rounded-btn">
+          <router-link
+            :to="{ name: 'exchangePage' }"
+            class="btn btn-ghost btn-sm rounded-btn"
+          >
             exchange
           </router-link>
           <router-link
-            :to="{name:'calculatorPage'}"
+            :to="{ name: 'calculatorPage' }"
             class="btn btn-ghost btn-sm rounded-btn"
           >
             Calculator
           </router-link>
-          <router-link :to="{name:'aboutUsPage'}" class="btn btn-ghost btn-sm rounded-btn">
+          <router-link
+            :to="{ name: 'aboutUsPage' }"
+            class="btn btn-ghost btn-sm rounded-btn"
+          >
             AboutUs
           </router-link>
         </div>

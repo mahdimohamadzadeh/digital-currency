@@ -1,7 +1,7 @@
 <template>
   <div class="grid place-items-center mt-52">
     <div class="w-full">
-      <secondClock />
+      <Clock />
       <Employe />
     </div>
   </div>
@@ -9,9 +9,9 @@
 
 <script>
 import Employe from "../components/Employe.vue";
-import secondClock from "../components/secondClock.vue";
+import Clock from "../components/Clock.vue";
 export default {
-  components: { Employe, secondClock },
+  components: { Employe, Clock },
 };
 </script>
 

@@ -20,7 +20,7 @@ export const useCurrencyStore = defineStore("Currency", {
                 price: clearRes.PRICE,
                 changeDay: clearRes.CHANGEDAY,
                 changehour: clearRes.CHANGEHOUR,
-                market: clearRes.MARKET,
+                lastVolume: clearRes.LASTVOLUME,
               };
               this.currencies.push(data);
               this.changeLoading(false);

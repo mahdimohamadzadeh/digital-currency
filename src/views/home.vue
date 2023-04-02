@@ -1,8 +1,8 @@
 <template>
   <div class="grid place-items-center">
     <LoadingPage v-if="loading" />
-    <div class="w-full mt-36">
-      <secondClock />
+    <div class="w-full mt-16 lg:mt-36">
+      <Clock class="hidden md:block" />
       <currencyTable :currencies="currencies" />
     </div>
   </div>
@@ -11,7 +11,7 @@
 <script setup>
 import { computed, onMounted } from "vue";
 import { useCurrencyStore } from "@/stores/currency";
-import secondClock from "../components/secondClock.vue";
+import Clock from "../components/Clock.vue";
 import currencyTable from "../components/currencyTable.vue";
 import LoadingPage from "../components/LoadingPage.vue";
 const currencyStore = useCurrencyStore();

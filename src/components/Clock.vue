@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center lg:absolute lg:top-11 lg:left-10 mt-10">
+  <div class="flex justify-center absolute top-11 left-16 lg:left-10 mt-10">
     <div id="clock" class="text-center bg-base-100 rounded-lg p-4">
       <p class="date text-base">{{ date }}</p>
       <p class="time text-3xl py-3">{{ time }}</p>

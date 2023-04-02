@@ -1,8 +1,8 @@
 <template>
-  <div class="grid h-screen place-items-center">
-    <div class="flex justify-around">
+  <div class="grid h-screen place-items-center mt-10 lg:mt-0">
+    <div class="grid lg:grid-cols-2 grid-cols-1">
       <img
-        class="w-11/12 md:w-8/12 mx-auto object-cover rounded-2xl"
+        class="w-full px-2 mx-auto object-cover rounded-2xl"
         v-lazy="{
           src: aboutImage,
           loading: loadingAboutImage,
@@ -11,9 +11,9 @@
         }"
       />
 
-      <div class="flex flex-col justify-around px-10">
+      <div class="flex flex-col justify-around px-10 mt-6 lg:mt-0">
         <h1 class="text-3xl uppercase">Mahdi Mohammadzadeh</h1>
-        <p class="font-semibold -mt-8">Web Developer</p>
+        <p class="font-semibold mt-0 md:-mt-2 lg:-mt-8">Web Developer</p>
         <p class="mt-16">
           Hi , I'm Mahdi Mohamadzadeh.A passionate frontend developer from Iran
           I have been learning and practicing in this field for almost 3 years.

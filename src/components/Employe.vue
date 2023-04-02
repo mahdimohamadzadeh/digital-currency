@@ -4,8 +4,12 @@
     <div class="mx-3 md:flex md:justify-center antialiased">
       <div class="sm:mt-10 p-8 mt-4 my-auto max-w-md rounded-3xl bg-neutral">
         <div class="text-center m-6">
-          <h3 class="text-3xl font-semibold">Rial: {{ rialValue }} &#65020;</h3>
-          <h3 class="text-3xl font-semibold mt-4 flex justify-center">
+          <h3 class="text-xl md:text-3xl font-semibold">
+            Rial: {{ rialValue }} &#65020;
+          </h3>
+          <h3
+            class="text-xl md:text-3xl font-semibold mt-4 flex justify-center"
+          >
             USD: {{ usdValueInput }} <CurrencyUsd class="mt-1"></CurrencyUsd>
           </h3>
         </div>

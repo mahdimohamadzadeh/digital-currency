@@ -1,7 +1,7 @@
 
-# Exchange money 
+# Digital currency
 
-Convert dollars to rials at the daily rate
+The site shows the price and details of famous digital currencies and online conversion of dollars to Rials.
 
 ## Project setup
 
