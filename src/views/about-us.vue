@@ -29,53 +29,43 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { computed, ref } from "@vue/runtime-core";
 import { useThemeStore } from "@/stores/theme";
 import axios from "axios";
-export default {
-  setup() {
-    const store = useThemeStore();
-    const theme = computed(() => store.getTheme || "darkTheme");
-    const aboutImage = new URL("../assets/image/about.jpg", import.meta.url)
-      .href;
-    const loadingAboutImage = new URL(
-      "../assets/image/loadingAbout.jpg",
-      import.meta.url
-    ).href;
-    const errorAboutImage = new URL(
-      "../assets/image/errorAbout.png",
-      import.meta.url
-    ).href;
-    const urlFile = ref(
-      "http://localhost:3000/src/assets/pdf/MahdiMohamadzadehCV.pdf"
-    );
-    const forceFileDownload = (response) => {
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "MahdiMohamadzadehCV.pdf"); //or any other extension
-      document.body.appendChild(link);
-      link.click();
-    };
-    const downloadFile = () => {
-      axios({
-        method: "get",
-        url: urlFile.value,
-        responseType: "arraybuffer",
-      })
-        .then((response) => {
-          forceFileDownload(response);
-        })
-        .catch((err) => console.log(err));
-    };
-    return {
-      theme,
-      aboutImage,
-      loadingAboutImage,
-      errorAboutImage,
-      downloadFile,
-    };
-  },
+const store = useThemeStore();
+const theme = computed(() => store.getTheme || "darkTheme");
+// Get image url
+const aboutImage = new URL("../assets/image/about.jpg", import.meta.url).href;
+const loadingAboutImage = new URL(
+  "../assets/image/loadingAbout.jpg",
+  import.meta.url
+).href;
+const errorAboutImage = new URL(
+  "../assets/image/errorAbout.png",
+  import.meta.url
+).href;
+const urlFile = ref(
+  "http://localhost:3000/src/assets/pdf/MahdiMohamadzadehCV.pdf"
+);
+// Download resume with axios
+const forceFileDownload = (response) => {
+  const url = window.URL.createObjectURL(new Blob([response.data]));
+  const link = document.createElement("a");
+  link.href = url;
+  link.setAttribute("download", "MahdiMohamadzadehCV.pdf");
+  document.body.appendChild(link);
+  link.click();
+};
+const downloadFile = () => {
+  axios({
+    method: "get",
+    url: urlFile.value,
+    responseType: "arraybuffer",
+  })
+    .then((response) => {
+      forceFileDownload(response);
+    })
+    .catch((err) => console.log(err));
 };
 </script>

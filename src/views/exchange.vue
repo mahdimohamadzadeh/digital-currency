@@ -3,16 +3,12 @@
     <div class="w-full">
       <Clock />
       <Employe />
+      <!-- section exchange money from dollar to rial -->
     </div>
   </div>
 </template>
 
-<script>
+<script setup>
 import Employe from "../components/Employe.vue";
 import Clock from "../components/Clock.vue";
-export default {
-  components: { Employe, Clock },
-};
 </script>
-
-<style lang="scss" scoped></style>

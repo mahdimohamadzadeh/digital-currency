@@ -1,3 +1,4 @@
+// catch data as object because api is limited 
 const currency = [
   {
     id: 1,

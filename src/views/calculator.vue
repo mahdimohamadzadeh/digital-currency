@@ -1,7 +1,6 @@
 <template>
   <div class="grid place-items-center h-screen">
-    <!-- component -->
-
+    <!-- show calculator for phone -->
     <div
       class="sm:hidden min-w-screen min-h-full flex items-center justify-center px-5 py-5"
     >
@@ -184,7 +183,7 @@
         </div>
       </div>
     </div>
-    <!-- component -->
+    <!-- show calculator for laptop -->
     <div
       class="hidden sm:block mx-auto overflow-hidden mt-10 mb-2 bg-neutral shadow-2xl rounded-lg md:w-2/3 sm:w-4/6"
     >
@@ -420,84 +419,74 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "Calculator",
-  data() {
-    return {
-      current: "",
-      previous: null,
-      operator: null,
-      clickedOperator: false,
-    };
-  },
-  methods: {
-    clearDisplay() {
-      this.current = "";
-      this.previous = null;
-      this.operator = null;
-      this.clickedOperator = false;
-    },
-    appendSymbol(number) {
-      if (this.clickedOperator) {
-        this.clickedOperator = false;
-        this.current = number;
-      } else {
-        this.current =
-          this.current === "0" ? number : `${this.current}${number}`;
-      }
-    },
-    convertDecimal() {
-      if (this.clickedOperator) {
-        this.current = "0.";
-        this.clickedOperator = false;
-      }
-      if (this.current.indexOf(".") === -1) {
-        this.current += "0.";
-      }
-    },
-    changeSign() {
-      this.current =
-        this.current.charAt(0) === "-"
-          ? this.current.slice(1)
-          : `-${this.current}`;
-    },
-    convertPercent() {
-      this.current = `${parseFloat(this.current) / 100}`;
-    },
-    handleOperator(newOperator) {
-      const numberValue = parseFloat(this.current);
-      if (this.operator && this.clickedOperator) {
-        this.operator = newOperator;
-      }
-      if (this.previous == null) {
-        this.previous = numberValue;
-      } else if (this.operator) {
-        const result = this.calculate(
-          this.previous,
-          numberValue,
-          this.operator
-        );
-        this.current = String(result);
-        this.previous = result;
-      }
-      this.clickedOperator = true;
-      this.operator = newOperator;
-    },
-    calculate(first, second, operator) {
-      switch (operator) {
-        case "+":
-          return first + second;
-        case "-":
-          return first - second;
-        case "×":
-          return first * second;
-        case "÷":
-          return first / second;
-        default:
-          return second;
-      }
-    },
-  },
+<script setup>
+import { ref } from "vue";
+
+const current = ref("");
+const previous = ref(null);
+const operator = ref(null);
+const clickedOperator = ref(false);
+const clearDisplay = () => {
+  // use for AC keyboard
+  current.value = "";
+  previous.value = null;
+  operator.value = null;
+  clickedOperator.value = false;
+};
+const appendSymbol = (number) => {
+  if (clickedOperator.value) {
+    clickedOperator.value = false;
+    current.value = number;
+  } else {
+    current.value =
+      current.value === "0" ? number : `${current.value}${number}`;
+  }
+};
+const convertDecimal = () => {
+  if (clickedOperator.value) {
+    current.value = "0.";
+    clickedOperator.value = false;
+  }
+  if (current.value.indexOf(".") === -1) {
+    current.value += "0.";
+  }
+};
+const changeSign = () => {
+  current.value =
+    current.value.charAt(0) === "-"
+      ? current.value.slice(1)
+      : `-${current.value}`;
+};
+const convertPercent = () => {
+  current.value = `${parseFloat(current.value) / 100}`;
+};
+const handleOperator = (newOperator) => {
+  const numberValue = parseFloat(current.value);
+  if (operator.value && clickedOperator.value) {
+    operator.value = newOperator;
+  }
+  if (previous.value == null) {
+    previous.value = numberValue;
+  } else if (operator.value) {
+    const result = calculate(previous.value, numberValue, operator.value);
+    current.value = String(result);
+    previous.value = result;
+  }
+  clickedOperator.value = true;
+  operator.value = newOperator;
+};
+const calculate = (first, second, operator) => {
+  switch (operator) {
+    case "+":
+      return first + second;
+    case "-":
+      return first - second;
+    case "×":
+      return first * second;
+    case "÷":
+      return first / second;
+    default:
+      return second;
+  }
 };
 </script>

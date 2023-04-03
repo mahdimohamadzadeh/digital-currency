@@ -44,47 +44,41 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref } from "@vue/reactivity";
 import axios from "axios";
 import { useThemeStore } from "@/stores/theme";
 import { computed } from "@vue/runtime-core";
 import Swal from "sweetalert2";
 import { CurrencyUsd } from "mdue";
-export default {
-  components: { CurrencyUsd },
-  setup() {
-    const rialValue = ref(null);
-    const usdValueInput = ref(null);
-    const isLoading = ref(false);
-    const store = useThemeStore();
-    const theme = computed(() => store.getTheme || "darkTheme");
-
-    const fetchPrice = async () => {
-      if (usdValueInput.value > 0) {
-        isLoading.value = true;
-        await axios
-          .get(
-            "http://api.navasan.tech/latest/?api_key=freeKiD737r8SxuVYd6vnhkzKVPBuap6"
-          )
-          .then((res) => {
-            let usd = res.data.usd_sell.value;
-            let change = usdValueInput.value * usd;
-            const filterChange = (number) => {
-              let toRial = number + "0";
-              return Number(toRial).toLocaleString();
-            };
-            rialValue.value = filterChange(change);
-            isLoading.value = false;
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      } else {
-        Swal.fire("مقداری وارد نکردید");
-      }
-    };
-    return { rialValue, usdValueInput, fetchPrice, theme, isLoading };
-  },
+const rialValue = ref(null);
+const usdValueInput = ref(null);
+const isLoading = ref(false);
+const store = useThemeStore();
+const theme = computed(() => store.getTheme || "darkTheme");
+const fetchPrice = async () => {
+  // get  dollar price to rial value from the api
+  if (usdValueInput.value > 0) {
+    isLoading.value = true;
+    await axios
+      .get(
+        "http://api.navasan.tech/latest/?api_key=freeKiD737r8SxuVYd6vnhkzKVPBuap6"
+      )
+      .then((res) => {
+        let usd = res.data.usd_sell.value;
+        let change = usdValueInput.value * usd;
+        const filterChange = (number) => {
+          let toRial = number + "0";
+          return Number(toRial).toLocaleString();
+        };
+        rialValue.value = filterChange(change);
+        isLoading.value = false;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  } else {
+    Swal.fire("مقداری وارد نکردید");
+  }
 };
 </script>

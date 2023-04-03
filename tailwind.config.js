@@ -13,10 +13,10 @@ module.exports = {
     logs: true,
     rtl: false,
     prefix: "",
-    darkTheme: "dark",
     themes: [
+      // Create my custom theme
       {
-        darkTheme: {
+        mainTheme: {
           primary: "#e863c2",
 
           secondary: "#0c458e",

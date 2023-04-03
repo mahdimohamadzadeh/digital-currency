@@ -4,7 +4,7 @@
       <div class="overflow-x-auto shadow-lg">
         <table class="table w-full table-normal">
           <!-- head -->
-          <thead>
+          <thead v-if="!loading">
             <tr class="grid md:grid-cols-5 grid-cols-2 items-center py-4">
               <th># name</th>
               <th>
@@ -35,7 +35,7 @@
             </tr>
           </thead>
           <tbody>
-            <!-- rows -->
+            <!-- foreach row of the table from the api  -->
             <tr
               class="grid md:grid-cols-5 grid-cols-2 items-center"
               v-for="(item, index) in currencies"
@@ -69,6 +69,7 @@
 <script setup>
 const props = defineProps({
   currencies: Object,
+  loading: Boolean,
 });
 </script>
 

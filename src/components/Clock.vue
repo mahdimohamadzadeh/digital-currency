@@ -9,7 +9,6 @@
 
 <script setup>
 import { ref } from "vue";
-
 const time = ref("");
 const date = ref("");
 const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];

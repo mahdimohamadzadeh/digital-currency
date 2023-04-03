@@ -1,4 +1,4 @@
-import "./assets/css/index.css";
+import "./assets/css/tailwind.css";
 
 import App from "./App.vue";
 import VueLazyLoad from "vue3-lazyload";
