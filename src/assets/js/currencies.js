@@ -1,4 +1,4 @@
-// catch data as object because api is limited 
+// catch data as object because api is limited
 const currency = [
   {
     id: 1,
@@ -58,7 +58,7 @@ const currency = [
     name: "XRP",
     symbol: "XRP",
     imageUrl:
-      "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_512/ba90bcb0cafb4801ac5dd310f47d6411.png",
+      "https://th.bing.com/th/id/OIP.Cq1MiTc38QJZHdbvPJzcvAHaHa?pid=ImgDet&w=630&h=630&rs=1",
     price: "",
     changeDay: "",
     changehour: "",
