@@ -84,7 +84,6 @@
 
 <script setup>
 import { ref } from "@vue/reactivity";
-import ThemeSwitchButton from "./ThemeSwitchButton.vue";
 import SideNav from "./SideNav.vue";
 import { useThemeStore } from "@/stores/theme";
 import { computed } from "@vue/runtime-core";

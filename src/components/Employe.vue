@@ -1,14 +1,14 @@
 <template>
   <h1 class="text-3xl font-bold text-center">Moneye Xchange</h1>
   <div class="">
-    <div class="mx-3 md:flex md:justify-center antialiased">
-      <div class="sm:mt-10 p-8 mt-4 my-auto max-w-md rounded-3xl bg-neutral">
-        <div class="text-center m-6">
-          <h3 class="text-xl md:text-3xl font-semibold">
+    <div class="mx-3 antialiased md:flex md:justify-center">
+      <div class="max-w-md p-8 my-auto mt-4 sm:mt-10 rounded-3xl bg-neutral">
+        <div class="m-6 text-center">
+          <h3 class="text-xl font-semibold md:text-3xl">
             Rial: {{ rialValue }} &#65020;
           </h3>
           <h3
-            class="text-xl md:text-3xl font-semibold mt-4 flex justify-center"
+            class="flex justify-center mt-4 text-xl font-semibold md:text-3xl"
           >
             USD: {{ usdValueInput }} <CurrencyUsd class="mt-1"></CurrencyUsd>
           </h3>
@@ -22,14 +22,14 @@
                   min="0"
                   v-model="usdValueInput"
                   placeholder="Enter USD price..."
-                  class="input input-bordered input-accent focus:outline-none ml-2 lg:ml-10 w-2/3 md:w-60 md:ml-16 px-3 py-2"
+                  class="w-2/3 px-3 py-2 ml-2 input input-bordered input-accent focus:outline-none lg:ml-10 md:w-60 md:ml-16"
                 />
-                <span class="border-2 border-accent text-xl">USD</span>
+                <span class="text-xl border-2 border-accent">USD</span>
               </label>
             </div>
             <div class="my-10">
               <button
-                class="btn md:w-1/2 rounded-md text-xl bg-accent text-neutral hover:bg-info"
+                class="text-xl rounded-md btn md:w-1/2 bg-accent text-neutral hover:bg-info"
                 type="submit"
                 :class="{ loading: isLoading }"
               >
@@ -62,7 +62,7 @@ const fetchPrice = async () => {
     isLoading.value = true;
     await axios
       .get(
-        "http://api.navasan.tech/latest/?api_key=freeKiD737r8SxuVYd6vnhkzKVPBuap6"
+        "http://api.navasan.tech/latest/?api_key=freeXcfgHSMe0JqRifJuukMzlqWwBAuG"
       )
       .then((res) => {
         let usd = res.data.usd_sell.value;
