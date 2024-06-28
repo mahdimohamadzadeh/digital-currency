@@ -13,17 +13,19 @@
 
       <div class="flex flex-col justify-around px-10 mt-6 lg:mt-0">
         <h1 class="text-3xl uppercase">Mahdi Mohammadzadeh</h1>
-        <p class="font-semibold mt-0 md:-mt-2 lg:-mt-8">Web Developer</p>
-        <p class="mt-16">
-          Hi , I'm Mahdi Mohamadzadeh.A passionate frontend developer from Iran
-          I have been learning and practicing in this field for almost 3 years.
+        <p class="font-semibold mt-0 md:-mt-2 lg:-mt-8">Front-End developer </p>
+        <p class="">
+          Hi , I'm Mahdi, A passionate frontend developer. Programming gives me
+          strength. So I would like to focus and devote my time to it. It has
+          been 5 years since then. My goal is to learn more, improve the level
+          of specialized and soft skills. 
         </p>
-        <button
+        <!-- <button
           @click="downloadFile"
           class="rounded-md py-3 px-16 mt-10 md:mt-20 bg-accent text-white"
         >
           My Resume
-        </button>
+        </button> -->
       </div>
     </div>
   </div>

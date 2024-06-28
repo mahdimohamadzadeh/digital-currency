@@ -61,14 +61,12 @@ const fetchPrice = async () => {
   if (usdValueInput.value > 0) {
     isLoading.value = true;
     await axios
-      .get(
-        "http://api.navasan.tech/latest/?api_key=freeXcfgHSMe0JqRifJuukMzlqWwBAuG"
-      )
+      .get("https://api.priceto.day/v1/latest/irr/usd")
       .then((res) => {
-        let usd = res.data.usd_sell.value;
+        let usd = +res.data.price;
         let change = usdValueInput.value * usd;
         const filterChange = (number) => {
-          let toRial = number + "0";
+          let toRial = number;
           return Number(toRial).toLocaleString();
         };
         rialValue.value = filterChange(change);
